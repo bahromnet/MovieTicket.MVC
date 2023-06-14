@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Application.MVC\Application.MVC.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Persistance\" />
+  </ItemGroup>
+
 </Project>
