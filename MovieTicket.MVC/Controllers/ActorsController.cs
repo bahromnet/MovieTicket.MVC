@@ -1,11 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.MVC.UseCases.Actors.Queries;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MovieTicket.MVC.Controllers;
 
 public class ActorsController : Controller
 {
-    public IActionResult Index()
+    private readonly IMediator mediator;
+    public ActorsController(IMediator mediator)
     {
-        return View();
+        this.mediator = mediator;
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        var data = await mediator.Send(new GetAllActorQuery());
+        return View(data);
     }
 }

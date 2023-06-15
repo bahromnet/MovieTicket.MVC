@@ -26,7 +26,7 @@ namespace MovieTicket.MVC.Controllers
             int recsCount = context.Movies.Count();
             var paginatedList = new PaginatedList(recsCount, pg, pageSize);
             int recSkip = (pg - 1) * pageSize;
-            IEnumerable<MovieDto> allMovies = await mediator.Send(new GetAllMovieQuery());
+            List<MovieDto> allMovies = await mediator.Send(new GetAllMovieQuery());
             List<MovieDto> employees = allMovies.Skip(recSkip).Take(paginatedList.PageSize).ToList();
             ViewBag.PaginatedList = paginatedList;
             return View(employees);
