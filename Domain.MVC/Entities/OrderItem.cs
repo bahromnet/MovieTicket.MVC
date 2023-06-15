@@ -6,7 +6,7 @@ namespace Domain.MVC.Entities;
 [Table("order_item")]
 public class OrderItem
 {
-    [Key]
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     public int Amount { get; set; }

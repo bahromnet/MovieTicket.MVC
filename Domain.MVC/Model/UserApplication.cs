@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace Application.MVC.Common.Models;
+namespace Domain.MVC.Entities;
 
-public class ApplicationUser : IdentityUser
+public class UserApplication : IdentityUser
 {
     [Display(Name = "Full name")]
     public string FullName { get; set; }

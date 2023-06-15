@@ -6,7 +6,7 @@ namespace Domain.MVC.Entities;
 [Table("shopping_cart_item")]
 public class ShoppingCartItem
 {
-    [Key]
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     public Movie Movie { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace Domain.MVC.Entities;
+﻿namespace Application.MVC.Common.Models;
 
 public class ErrorViewModel
 {

@@ -7,7 +7,7 @@ namespace Domain.MVC.Entities;
 [Table("movie")]
 public class Movie
 {
-    [Key]
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     public string Name { get; set; }

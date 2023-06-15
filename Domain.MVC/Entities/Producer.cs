@@ -6,7 +6,7 @@ namespace Domain.MVC.Entities;
 [Table("producer")]
 public class Producer
 {
-    [Key]
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     [Display(Name = "Profile Picture")]
