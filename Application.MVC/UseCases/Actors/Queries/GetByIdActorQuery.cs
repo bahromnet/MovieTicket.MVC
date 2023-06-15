@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.MVC.UseCases.Actors.Queries;
 
-public class GetByIdActorQuery : IRequest<ActorDto>
+public record GetByIdActorQuery : IRequest<ActorDto>
 {
     public int Id { get; set; }
 }

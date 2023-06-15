@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.MVC.UseCases.Actors.Queries;
 
-public class GetAllActorQuery : IRequest<List<ActorDto>>
+public record GetAllActorQuery : IRequest<List<ActorDto>>
 {
 }
 

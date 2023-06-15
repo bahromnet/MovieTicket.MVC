@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.MVC.UseCases.Actors.Commands;
 
-public class CreateActorCommand : IRequest<int>
+public record CreateActorCommand : IRequest<int>
 {
     public string ProfilePictureURL { get; set; }
     public string FullName { get; set; }
