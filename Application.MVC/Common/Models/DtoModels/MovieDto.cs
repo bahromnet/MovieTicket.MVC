@@ -1,4 +1,5 @@
-﻿using Domain.MVC.Enums;
+﻿using Domain.MVC.Entities;
+using Domain.MVC.Enums;
 
 namespace Application.MVC.Common.Models.DtoModels;
 
@@ -12,6 +13,6 @@ public class MovieDto
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public MovieCategory MovieCategory { get; set; }
-    public int CinemaId { get; set; }
-    public int ProducerId { get; set; }
+    public Cinema Cinema { get; set; }
+    public Producer Producer { get; set; }
 }

@@ -1,5 +1,5 @@
-﻿@using Domain.MVC.Entities;
-@model IEnumerable<Actor>
+﻿@using Application.MVC.Common.Models.DtoModels;
+@model IEnumerable<ActorDto>
 
 @{
     ViewData["Title"] = "List of Actors";
@@ -45,4 +45,4 @@
     </div>
 </div>
 
-@await Html.PartialAsync("_CreateItem", "Actors") 
+@*@await Html.PartialAsync("_CreateItem", "Actors") *@

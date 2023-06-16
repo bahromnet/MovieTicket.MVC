@@ -1,6 +1,7 @@
-﻿@using Domain.MVC.Entities;
+﻿@using Application.MVC.Common.Models.DtoModels;
+@using Domain.MVC.Entities;
 
-@model List<Movie>
+@model List<MovieDto>
 
 @{
     ViewData["Title"] = "List of Movies";
@@ -73,4 +74,4 @@
     }
 </div>
 
-@await Html.PartialAsync("_CreateItem", "Movies") 
+@*@await Html.PartialAsync("_CreateItem", "Movies") *@
