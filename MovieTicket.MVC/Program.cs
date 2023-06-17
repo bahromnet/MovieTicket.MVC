@@ -18,7 +18,7 @@ namespace MovieTicket.MVC
 
             if (!app.Environment.IsDevelopment())
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Movies/Error");
                 app.UseHsts();
             }
 
@@ -31,7 +31,7 @@ namespace MovieTicket.MVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Movies}/{action=Index}/{id?}");
 
             app.Run();
         }
