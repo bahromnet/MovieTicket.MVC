@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
-namespace Application.MVC.UseCases.Movies.Commands
+namespace Application.MVC.UseCases.Movies.Commands;
+
+public record DeleteMovieCommand(int Id) : IRequest;
+
+public class DeleteMovieCommandHandler : IRequestHandler<DeleteMovieCommand>
 {
-    internal class DeleteMovieCommand
+    public Task Handle(DeleteMovieCommand request, CancellationToken cancellationToken)
     {
+        throw new NotImplementedException();
     }
 }

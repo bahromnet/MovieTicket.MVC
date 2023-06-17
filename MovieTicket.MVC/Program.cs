@@ -1,6 +1,5 @@
 using Infrastructure.MVC;
 using Application.MVC;
-using Infrastructure.MVC.Persistance;
 
 namespace MovieTicket.MVC
 {
@@ -33,8 +32,6 @@ namespace MovieTicket.MVC
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            //AppDbInitializer.Seed(app);
 
             app.Run();
         }
