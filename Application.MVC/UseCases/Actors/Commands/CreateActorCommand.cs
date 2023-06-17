@@ -6,9 +6,9 @@ namespace Application.MVC.UseCases.Actors.Commands;
 
 public record CreateActorCommand : IRequest<int>
 {
-    public string ProfilePictureURL { get; set; }
-    public string FullName { get; set; }
-    public string Bio { get; set; }
+    public string ProfilePictureURL { get; init; }
+    public string FullName { get; init; }
+    public string Bio { get; init; }
 }
 
 public class CreateActorCommandHandler : IRequestHandler<CreateActorCommand, int>

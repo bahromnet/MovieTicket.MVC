@@ -7,13 +7,17 @@ namespace Application.MVC.UseCases.Movies.Commands;
 
 public record CreateMovieCommand : IRequest<int>
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public double Price { get; set; }
-    public string ImageURL { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public MovieCategory MovieCategory { get; set; }
+    public string Name { get; init; }
+    public string Description { get; init; }
+    public double Price { get; init; }
+    public string ImageURL { get; init; }
+    public DateTime StartDate { get; init; }
+    public DateTime EndDate { get; init; }
+    public MovieCategory MovieCategory { get; init; }
+    public Cinema Cinema { get; init; }
+    public Producer Producer { get; init; }
+    public List<int> ActorIds { get; init; }
+    //public List<ActorMovie> ActorsMovies { get; init; }
 }
 
 public class CreateMovieCommandHandle : IRequestHandler<CreateMovieCommand, int>
@@ -35,11 +39,25 @@ public class CreateMovieCommandHandle : IRequestHandler<CreateMovieCommand, int>
             ImageURL = request.ImageURL,
             StartDate = request.StartDate,
             EndDate = request.EndDate,
-            MovieCategory = request.MovieCategory
+            MovieCategory = request.MovieCategory,
+            CinemaId = request.Cinema.Id,
+            ProducerId = request.Producer.Id
         };
 
         _context.Movies.Add(entity);
         await _context.SaveChangesAsync();
+
+        foreach (var actorId in request.ActorIds)
+        {
+            var newActorMovie = new ActorMovie()
+            {
+                ActorId = actorId,
+                MovieId = entity.Id
+            };
+            await _context.ActorMovies.AddAsync(newActorMovie);
+        }
+        await _context.SaveChangesAsync(cancellationToken);
+
         return entity.Id;
     }
 }

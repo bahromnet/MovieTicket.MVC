@@ -15,4 +15,5 @@ public class MovieDto
     public MovieCategory MovieCategory { get; set; }
     public Cinema Cinema { get; set; }
     public Producer Producer { get; set; }
+    public List<ActorMovie> ActorsMovies { get; init; }
 }

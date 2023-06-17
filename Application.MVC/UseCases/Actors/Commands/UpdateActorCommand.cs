@@ -7,10 +7,10 @@ namespace Application.MVC.UseCases.Actors.Commands;
 
 public record UpdateActorCommand : IRequest
 {
-    public int Id { get; set; }
-    public string ProfilePictureURL { get; set; }
-    public string FullName { get; set; }
-    public string Bio { get; set; }
+    public int Id { get; init; }
+    public string ProfilePictureURL { get; init; }
+    public string FullName { get; init; }
+    public string Bio { get; init; }
 }
 
 public class UpdateActorCommandHandler : IRequestHandler<UpdateActorCommand>

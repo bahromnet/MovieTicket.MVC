@@ -1,9 +1,12 @@
-﻿using Application.MVC.UseCases.Actors.Queries;
+﻿using Application.MVC.Common.Static;
+using Application.MVC.UseCases.Actors.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MovieTicket.MVC.Controllers;
 
+[Authorize(Roles = UserRoles.Admin)]
 public class ActorsController : Controller
 {
     private readonly IMediator mediator;

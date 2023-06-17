@@ -1,12 +1,15 @@
 ﻿using Application.MVC.Common.Interfaces;
 using Application.MVC.Common.Models;
 using Application.MVC.Common.Models.DtoModels;
+using Application.MVC.Common.Static;
 using Application.MVC.UseCases.Movies.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MovieTicket.MVC.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class MoviesController : Controller
     {
         private readonly IApplicationDbContext context;
@@ -18,6 +21,7 @@ namespace MovieTicket.MVC.Controllers
             this.mediator = mediator;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index(int pg = 1)
         {
             const int pageSize = 10;
@@ -31,6 +35,29 @@ namespace MovieTicket.MVC.Controllers
             ViewBag.PaginatedList = paginatedList;
             return View(employees);
         }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Filter(string searchText)
+        {
+            var allMovies = mediator.Send(new GetAllMovieQuery());
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                var filtredResult = allMovies.Result.Where(n =>
+                       string.Equals(n.Name, searchText, StringComparison.CurrentCultureIgnoreCase)
+                    || string.Equals(n.Description, searchText, StringComparison.CurrentCultureIgnoreCase)).ToList();
+
+                return View("Index", filtredResult);
+            }
+            return View("Index", allMovies);
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(int id)
+        {
+            var movieDetail = await mediator.Send(new GetByIdMovieQuery { Id = id });
+            return View(movieDetail);
+        }
+
 
     }
 }
