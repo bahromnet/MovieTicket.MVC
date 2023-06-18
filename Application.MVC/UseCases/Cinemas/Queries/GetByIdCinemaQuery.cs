@@ -5,7 +5,10 @@ using MediatR;
 
 namespace Application.MVC.UseCases.Cinemas.Queries;
 
-public record GetByIdCinemaQuery(int Id) : IRequest<CinemaDto>;
+public record GetByIdCinemaQuery : IRequest<CinemaDto>
+{
+    public int Id { get; set; } 
+}
 
 public class GetByIdCinemaQueryHandler : IRequestHandler<GetByIdCinemaQuery, CinemaDto>
 {

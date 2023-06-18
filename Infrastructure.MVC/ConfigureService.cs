@@ -1,4 +1,5 @@
 ﻿using Application.MVC.Common.Interfaces;
+using Application.MVC.Common.Services.ServiceMovie;
 using Infrastructure.MVC.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
